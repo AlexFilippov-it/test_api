@@ -18,7 +18,7 @@ def pytest_addoption(parser):
 
     parser.addoption(
         "--encoding",
-        default="utf-8",
+        default=["utf-8"],
         choices=["utf-8", "CP-1251"],
         help="encoding to execute"
     )
@@ -32,8 +32,3 @@ def base_url(request):
 @pytest.fixture
 def request_method(request):
     return getattr(requests, request.config.getoption("--method"))
-
-
-@pytest.fixture
-def request_encoding(request):
-    return request.config.getoption("--encoding")
